@@ -1,4 +1,5 @@
 import 'package:carzo/core/routes/app_router.dart';
+import 'package:carzo/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +17,8 @@ class CarzoApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: "Poppins"),
-          //  onGenerateRoute: appRouter.generateRoute,
-          //  initialRoute: Routes.getStartedScreen,
+          onGenerateRoute: appRouter.generateRoute,
+          initialRoute: Routes.getStartedScreen,
         );
       },
     );

@@ -10,7 +10,7 @@ class AppRouter {
       case Routes.getStartedScreen:
         return MaterialPageRoute(builder: (_) => GetStartedScreen());
 
-      ///
+      /// Login Screen
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => LoginScreen());
     }

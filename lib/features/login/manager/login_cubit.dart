@@ -1,6 +1,5 @@
 import 'package:carzo/core/helpers/constants.dart';
 import 'package:carzo/core/helpers/shared_pref_helper.dart';
-import 'package:carzo/core/networking/api_network_exceptions.dart';
 import 'package:carzo/core/networking/api_result.dart';
 import 'package:carzo/core/networking/dio_factory.dart';
 import 'package:carzo/features/login/data/models/login_request_model.dart';
@@ -39,14 +38,22 @@ class LoginCubit extends Cubit<LoginState> {
           );
           emit(LoginState.success(loginResponse));
         },
-        failure: (error) async {
+        failure: (error) {
           emit(
-            LoginState.failure(ApiNetworkExceptions(message: error.toString())),
+            LoginState.failure(
+              error:
+                  error.message ??
+                  "An unexpected error occurred. Please try again.",
+            ),
           );
         },
       );
     } catch (error) {
-      emit(LoginState.failure(ApiNetworkExceptions(message: error.toString())));
+      emit(
+        LoginState.failure(
+          error: "An unexpected error occurred. Please try again.",
+        ),
+      );
     }
   }
 

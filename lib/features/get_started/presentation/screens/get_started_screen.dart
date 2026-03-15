@@ -3,7 +3,7 @@ import 'package:carzo/core/routes/routes.dart';
 import 'package:carzo/core/themes/app_colors.dart';
 import 'package:carzo/features/get_started/data/models/get_started_model.dart';
 import 'package:carzo/features/get_started/presentation/widgets/custom_background_image.dart';
-import 'package:carzo/features/get_started/presentation/widgets/custom_button.dart';
+import 'package:carzo/features/get_started/presentation/widgets/custom_button_for_get_started_screen.dart.dart';
 import 'package:carzo/features/get_started/presentation/widgets/custom_description.dart';
 import 'package:carzo/features/get_started/presentation/widgets/custom_dots.dart';
 import 'package:carzo/features/get_started/presentation/widgets/custom_logo.dart';
@@ -130,7 +130,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                       //
                       const Spacer(),
                       //
-                      CustomButton(
+                      CustomButtonForGetStartedScreen(
                         currentIndex: currentIndex,
                         pageController: _pageController,
                       ),

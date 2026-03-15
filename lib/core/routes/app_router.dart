@@ -10,10 +10,19 @@ class AppRouter {
       case Routes.getStartedScreen:
         return MaterialPageRoute(builder: (_) => GetStartedScreen());
 
-      ///
+      /// Login Screen
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => LoginScreen());
+
+      /// Default Case
+      default:
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text("No Page Found For This ${settings.name}"),
+            ),
+          ),
+        );
     }
-    return null;
   }
 }

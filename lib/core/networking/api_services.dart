@@ -1,4 +1,6 @@
 import 'package:carzo/core/networking/api_constants.dart';
+import 'package:carzo/features/login/data/models/login_request_model.dart';
+import 'package:carzo/features/login/data/models/login_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -8,6 +10,7 @@ part 'api_services.g.dart';
 abstract class ApiServices {
   factory ApiServices(Dio dio, {String? baseUrl}) = _ApiServices;
 
-  @GET("path")
-  Future<void> getUsers();
+  /// Login User
+  @POST(ApiConstants.apiLogin)
+  Future<LoginResponseModel> login(@Body() LoginRequestModel loginRequestModel);
 }

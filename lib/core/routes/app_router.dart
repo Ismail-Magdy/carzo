@@ -1,7 +1,7 @@
 import 'package:carzo/core/di/dependency_injection.dart';
 import 'package:carzo/core/routes/routes.dart';
 import 'package:carzo/features/get_started/presentation/screens/get_started_screen.dart';
-import 'package:carzo/features/home/home_screen.dart';
+import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/login/presentation/screens/login_screen.dart';
 import 'package:carzo/features/root/presentation/screens/root_screen.dart';

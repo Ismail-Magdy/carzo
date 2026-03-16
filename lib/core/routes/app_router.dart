@@ -4,7 +4,7 @@ import 'package:carzo/features/get_started/presentation/screens/get_started_scre
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/login/presentation/screens/login_screen.dart';
-import 'package:carzo/features/notification/notification_screen.dart';
+import 'package:carzo/features/notification/presentation/screens/notification_screen.dart';
 import 'package:carzo/features/root/presentation/screens/root_screen.dart';
 import 'package:carzo/features/sign_up/manager/sign_up_cubit.dart';
 import 'package:carzo/features/sign_up/presentation/screens/sign_up_screen.dart';

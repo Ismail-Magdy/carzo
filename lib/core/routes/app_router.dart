@@ -4,9 +4,11 @@ import 'package:carzo/features/get_started/presentation/screens/get_started_scre
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/login/presentation/screens/login_screen.dart';
+import 'package:carzo/features/notification/notification_screen.dart';
 import 'package:carzo/features/root/presentation/screens/root_screen.dart';
 import 'package:carzo/features/sign_up/manager/sign_up_cubit.dart';
 import 'package:carzo/features/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:carzo/features/user/user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,9 +41,17 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
 
-      ///
+      /// Root Screen
       case Routes.rootScreen:
         return MaterialPageRoute(builder: (_) => const RootScreen());
+
+      /// NotificationScreen
+      case Routes.notificationScreen:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
+
+      /// UserScreen
+      case Routes.userScreen:
+        return MaterialPageRoute(builder: (_) => const UserScreen());
 
       /// Default Case
       default:

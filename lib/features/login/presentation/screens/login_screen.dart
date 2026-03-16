@@ -5,10 +5,9 @@ import 'package:carzo/core/themes/app_colors.dart';
 import 'package:carzo/core/themes/app_fonts.dart';
 import 'package:carzo/core/widgets/custom_align_text.dart';
 import 'package:carzo/core/widgets/custom_button.dart';
+import 'package:carzo/core/widgets/custom_text_form_field.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/login/presentation/widgets/custom_clickable_text.dart';
-import 'package:carzo/features/login/presentation/widgets/custom_email_text_field.dart';
-import 'package:carzo/features/login/presentation/widgets/custom_password_text_field.dart';
 import 'package:carzo/features/login/presentation/widgets/login_bloc_listener.dart';
 import 'package:carzo/features/login/presentation/widgets/logo_image.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     //
                     verticalSpace(10),
                     // Email Text Field
-                    CustomEmailTextField(),
+                    CustomTextFormField(
+                      controller: context.read<LoginCubit>().emailController,
+                      hintText: "Please Enter your email.",
+                      fieldType: .email,
+                    ),
                     //
                     verticalSpace(26),
                     // Password Text
@@ -55,7 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     //
                     verticalSpace(10),
                     // Password Text Field
-                    CustomPasswordTextField(),
+                    CustomTextFormField(
+                      controller: context.read<LoginCubit>().passwordController,
+                      hintText: "Please Enter your Password.",
+                      fieldType: .password,
+                    ),
                     //
                     verticalSpace(50),
                     //

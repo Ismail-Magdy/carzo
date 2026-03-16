@@ -13,11 +13,14 @@ class CarzoApp extends StatelessWidget {
       designSize: const Size(366, 815),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: "Poppins"),
-        onGenerateRoute: appRouter.generateRoute,
-        initialRoute: Routes.getStartedScreen,
+      builder: (_, child) => GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: "Poppins"),
+          onGenerateRoute: appRouter.generateRoute,
+          initialRoute: Routes.getStartedScreen,
+        ),
       ),
     );
   }

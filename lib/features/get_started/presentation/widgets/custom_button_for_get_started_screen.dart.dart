@@ -5,10 +5,10 @@ import 'package:carzo/core/themes/font_weight_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButtonForGetStartedScreen extends StatelessWidget {
   final int currentIndex;
   final PageController pageController;
-  const CustomButton({
+  const CustomButtonForGetStartedScreen({
     super.key,
     required this.currentIndex,
     required this.pageController,

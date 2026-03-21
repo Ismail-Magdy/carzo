@@ -20,8 +20,10 @@ class SignUpRequestModel {
     required this.password,
   });
 
+  /// DONOT NEED THIS
   factory SignUpRequestModel.fromJson(Map<String, dynamic> json) =>
       _$SignUpRequestModelFromJson(json);
+  //
 
   Map<String, dynamic> toJson() => _$SignUpRequestModelToJson(this);
 

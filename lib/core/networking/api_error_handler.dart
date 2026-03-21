@@ -130,10 +130,12 @@ ApiErrorModel _handleError(DioException error) {
     case DioExceptionType.badResponse:
       final statusCode =
           error.response?.statusCode ?? ResponseCode.defaultError;
-      if (error.response?.data != null) {
+      final responseData = error.response?.data;
+
+      if (responseData != null && responseData is Map<String, dynamic>) {
         try {
-          return ApiErrorModel.fromJson(error.response!.data);
-        } catch (_) {
+          return ApiErrorModel.fromJson(responseData);
+        } catch (e) {
           return _mapStatusCodeToFailure(statusCode);
         }
       } else {

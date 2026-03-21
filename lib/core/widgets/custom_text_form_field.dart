@@ -208,7 +208,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
 
         /// Password visibility toggle button.
-        suffixIcon: widget.fieldType == FieldType.password
+        suffixIcon: widget.fieldType == .password
             ? IconButton(
                 onPressed: () {
                   setState(() {

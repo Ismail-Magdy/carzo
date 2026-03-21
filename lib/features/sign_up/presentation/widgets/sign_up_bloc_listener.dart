@@ -15,22 +15,22 @@ class SignUpBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpState>(
       listenWhen: (previous, current) =>
-          current is Loading || current is Success || current is Error,
+          current is Loading || current is Success || current is Failure,
       listener: (context, state) {
         state.whenOrNull(
-          loading: () => _showLoadingDialog(context),
+          loading: () => showLoadingDialog(context),
           success: (loginResponse) {
             context.pop();
             showSuccessDialog(context);
           },
-          failure: (error) => _showErrorDialog(context, error),
+          failure: (error) => showErrorDialog(context, error),
         );
       },
       child: const SizedBox.shrink(),
     );
   }
 
-  void _showErrorDialog(BuildContext context, String error) {
+  void showErrorDialog(BuildContext context, String error) {
     context.pop();
     showDialog(
       context: context,
@@ -44,7 +44,7 @@ class SignUpBlocListener extends StatelessWidget {
     );
   }
 
-  void _showLoadingDialog(BuildContext context) {
+  void showLoadingDialog(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false,

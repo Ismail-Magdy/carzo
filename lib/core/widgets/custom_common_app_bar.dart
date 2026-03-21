@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomCommanAppBar extends StatelessWidget {
+class CustomCommonAppBar extends StatelessWidget {
   final String text;
-  const CustomCommanAppBar({super.key, required this.text});
+  const CustomCommonAppBar({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

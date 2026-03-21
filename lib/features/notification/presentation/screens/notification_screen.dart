@@ -1,7 +1,7 @@
 import 'package:carzo/core/helpers/spacing.dart';
 import 'package:carzo/core/themes/app_colors.dart';
 import 'package:carzo/core/themes/app_fonts.dart';
-import 'package:carzo/core/widgets/custom_comman_app_bar.dart';
+import 'package:carzo/core/widgets/custom_common_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,7 +17,7 @@ class NotificationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: .center,
           children: [
-            CustomCommanAppBar(text: "Notification"),
+            CustomCommonAppBar(text: "Notification"),
             //
             Expanded(
               child: Padding(

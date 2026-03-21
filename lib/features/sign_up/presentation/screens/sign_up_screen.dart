@@ -128,6 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpace(10),
                     // Password
                     CustomTextFormField(
+                      fieldType: .password,
                       controller: context
                           .read<SignUpCubit>()
                           .passwordController,

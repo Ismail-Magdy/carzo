@@ -5,7 +5,7 @@ class Routes {
   static const String getStartedScreen = "/getStartedScreen";
   static const String loginScreen = "/loginScreen";
   static const String signUpScreen = "/signUpScreen";
-  //
   static const String notificationScreen = "/notificationScreen";
   static const String userScreen = "/userScreen";
+  static const String recommendForYouScreen = "/recommendForYouScreen";
 }

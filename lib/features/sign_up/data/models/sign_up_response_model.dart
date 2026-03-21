@@ -17,7 +17,9 @@ class SignUpResponseModel {
   factory SignUpResponseModel.fromJson(Map<String, dynamic> json) =>
       _$SignUpResponseModelFromJson(json);
 
+  /// DONOT NEED THIS
   Map<String, dynamic> toJson() => _$SignUpResponseModelToJson(this);
+  //
 
   static const jsonSchema = _$SignUpResponseModelJsonSchema;
 }

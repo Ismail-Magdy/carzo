@@ -1,6 +1,7 @@
 import 'package:carzo/core/networking/api_constants.dart';
 import 'package:carzo/features/login/data/models/login_request_model.dart';
 import 'package:carzo/features/login/data/models/login_response_model.dart';
+import 'package:carzo/features/recommend_for_you/data/models/all_cars_model.dart';
 import 'package:carzo/features/sign_up/data/models/sign_up_request_model.dart';
 import 'package:carzo/features/sign_up/data/models/sign_up_response_model.dart';
 import 'package:dio/dio.dart';
@@ -21,4 +22,8 @@ abstract class ApiServices {
   Future<SignUpResponseModel> signUp(
     @Body() SignUpRequestModel signUpRequestModel,
   );
+
+  /// Get All Cars
+  @GET(ApiConstants.apiAllCars)
+  Future<List<AllCarsModel>> getAllCars();
 }

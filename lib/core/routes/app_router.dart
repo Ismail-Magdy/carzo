@@ -5,6 +5,7 @@ import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/login/presentation/screens/login_screen.dart';
 import 'package:carzo/features/notification/presentation/screens/notification_screen.dart';
+import 'package:carzo/features/recommend_for_you/presentation/screens/recommend_for_you_screen.dart';
 import 'package:carzo/features/root/presentation/screens/root_screen.dart';
 import 'package:carzo/features/sign_up/manager/sign_up_cubit.dart';
 import 'package:carzo/features/sign_up/presentation/screens/sign_up_screen.dart';
@@ -52,6 +53,10 @@ class AppRouter {
       /// UserScreen
       case Routes.userScreen:
         return MaterialPageRoute(builder: (_) => const UserScreen());
+
+      /// RecommendForYouScreen
+      case Routes.recommendForYouScreen:
+        return MaterialPageRoute(builder: (_) => const RecommendForYouScreen());
 
       /// Default Case
       default:

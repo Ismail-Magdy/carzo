@@ -22,6 +22,19 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  //
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  //
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Padding(
               padding: .symmetric(horizontal: 18.w),
               child: Form(
-                key: context.read<LoginCubit>().formKey,
+                key: _formKey,
                 child: Column(
                   children: [
                     // Logo Image
@@ -47,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     verticalSpace(10),
                     // Email Text Field
                     CustomTextFormField(
-                      controller: context.read<LoginCubit>().emailController,
+                      controller: _emailController,
                       hintText: "Please Enter your email.",
                       fieldType: .email,
                     ),
@@ -59,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     verticalSpace(10),
                     // Password Text Field
                     CustomTextFormField(
-                      controller: context.read<LoginCubit>().passwordController,
+                      controller: _passwordController,
                       hintText: "Please Enter your Password.",
                       fieldType: .password,
                     ),
@@ -93,8 +106,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void validateThenLogin(BuildContext context) {
-    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates();
+    if (_formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
     }
   }
 }

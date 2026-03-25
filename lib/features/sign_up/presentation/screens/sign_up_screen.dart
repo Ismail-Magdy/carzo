@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/routes/routes.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -27,11 +26,35 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  //
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  //
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _phoneNumberController.dispose();
+    _userNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  //
   bool hasLowercase = false;
   bool hasUppercase = false;
   bool hasSpecialCharacters = false;
   bool hasNumber = false;
   bool hasMinLength = false;
+  //
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Padding(
               padding: .symmetric(horizontal: 18.w),
               child: Form(
-                key: context.read<SignUpCubit>().formKey,
+                key: _formKey,
                 child: Column(
                   children: [
                     //
@@ -59,9 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpace(10),
                     // First Name
                     CustomTextFormField(
-                      controller: context
-                          .read<SignUpCubit>()
-                          .firstNameController,
+                      controller: _firstNameController,
                       hintText: "Enter your first name.",
                       fieldType: .firstName,
                     ),
@@ -73,9 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpace(10),
                     // Last Name
                     CustomTextFormField(
-                      controller: context
-                          .read<SignUpCubit>()
-                          .lastNameController,
+                      controller: _lastNameController,
                       hintText: "Enter your last name.",
                       fieldType: .lastName,
                     ),
@@ -87,9 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpace(10),
                     // Phone Number
                     CustomTextFormField(
-                      controller: context
-                          .read<SignUpCubit>()
-                          .phoneNumberController,
+                      controller: _phoneNumberController,
                       hintText: "Enter your phome number.",
                       fieldType: .phoneNumber,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -102,9 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpace(10),
                     // UserName
                     CustomTextFormField(
-                      controller: context
-                          .read<SignUpCubit>()
-                          .userNameController,
+                      controller: _userNameController,
                       hintText: "Enter your username.",
                       fieldType: .userName,
                     ),
@@ -116,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpace(10),
                     // Email
                     CustomTextFormField(
-                      controller: context.read<SignUpCubit>().emailController,
+                      controller: _emailController,
                       hintText: "Please Enter your email.",
                       fieldType: .email,
                     ),
@@ -129,9 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // Password
                     CustomTextFormField(
                       fieldType: .password,
-                      controller: context
-                          .read<SignUpCubit>()
-                          .passwordController,
+                      controller: _passwordController,
                       hintText: "Please Enter your Password.",
                     ),
                     //
@@ -176,41 +189,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<SignUpCubit>().passwordController;
+    _passwordController;
     setupPasswordControllerListener();
   }
 
   void setupPasswordControllerListener() {
-    context.read<SignUpCubit>().passwordController.addListener(() {
+    _passwordController.addListener(() {
       setState(() {
-        hasLowercase = AppRegex.hasLowerCase(
-          context.read<SignUpCubit>().passwordController.text,
-        );
-        hasUppercase = AppRegex.hasUpperCase(
-          context.read<SignUpCubit>().passwordController.text,
-        );
+        hasLowercase = AppRegex.hasLowerCase(_passwordController.text);
+        hasUppercase = AppRegex.hasUpperCase(_passwordController.text);
         hasSpecialCharacters = AppRegex.hasSpecialCharacter(
-          context.read<SignUpCubit>().passwordController.text,
+          _passwordController.text,
         );
-        hasNumber = AppRegex.hasNumber(
-          context.read<SignUpCubit>().passwordController.text,
-        );
-        hasMinLength = AppRegex.hasMinLength(
-          context.read<SignUpCubit>().passwordController.text,
-        );
+        hasNumber = AppRegex.hasNumber(_passwordController.text);
+        hasMinLength = AppRegex.hasMinLength(_passwordController.text);
       });
     });
   }
 
   void validateThenSignup(BuildContext context) {
-    if (context.read<SignUpCubit>().formKey.currentState!.validate()) {
-      context.read<SignUpCubit>().emitSignUpState();
+    if (_formKey.currentState!.validate()) {
+      context.read<SignUpCubit>().emitSignUpState(
+        email: _emailController.text,
+        firstName: _firstNameController.text,
+        lastName: _lastNameController.text,
+        phoneNumber: _phoneNumberController.text,
+        userName: _userNameController.text,
+        password: _passwordController.text,
+      );
     }
-  }
-
-  @override
-  void dispose() {
-    context.read<SignUpCubit>().passwordController.dispose();
-    super.dispose();
   }
 }

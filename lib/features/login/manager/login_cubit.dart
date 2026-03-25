@@ -5,28 +5,21 @@ import 'package:carzo/core/networking/dio_factory.dart';
 import 'package:carzo/features/login/data/models/login_request_model.dart';
 import 'package:carzo/features/login/data/repos/login_repo.dart';
 import 'package:carzo/features/login/manager/login_state.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
   LoginCubit(this._loginRepo) : super(const LoginState.idle());
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  void emitLoginStates() async {
-    if (!formKey.currentState!.validate()) return;
-
+  void emitLoginStates({
+    required String email,
+    required String password,
+  }) async {
     emit(const LoginState.loading());
 
     try {
       final data = await _loginRepo.login(
-        LoginRequestModel(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim(),
-        ),
+        LoginRequestModel(email: email.trim(), password: password.trim()),
       );
       data.when(
         success: (loginResponse) async {

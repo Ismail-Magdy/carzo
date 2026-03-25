@@ -5,6 +5,8 @@ import 'package:carzo/features/home/presentation/widgets/custom_drawer.dart';
 import 'package:carzo/features/home/presentation/widgets/custom_two_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routes/routes.dart';
 import '../../../../core/themes/app_fonts.dart';
 import '../widgets/custom_brands_row.dart';
 import '../widgets/custom_search_and_drawer.dart';
@@ -73,8 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     CustomTwoTexts(
                       leftText: "Recommend For You",
                       onTap: () {
-                        // TODO :
-                        // context.pushNamed(Routes.recommendForYouView);
+                        context.pushNamed(Routes.recommendForYouScreen);
                       },
                     ),
                     //

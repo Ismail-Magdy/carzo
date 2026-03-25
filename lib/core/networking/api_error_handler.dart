@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import 'api_constants.dart';
 import 'api_error_model.dart';
 
@@ -117,17 +116,17 @@ class ErrorHandler implements Exception {
 
 ApiErrorModel _handleError(DioException error) {
   switch (error.type) {
-    case DioExceptionType.connectionTimeout:
+    case .connectionTimeout:
       return DataSource.connectTimeout.getFailure();
-    case DioExceptionType.sendTimeout:
+    case .sendTimeout:
       return DataSource.sendTimeout.getFailure();
-    case DioExceptionType.receiveTimeout:
+    case .receiveTimeout:
       return DataSource.receiveTimeout.getFailure();
-    case DioExceptionType.cancel:
+    case .cancel:
       return DataSource.cancel.getFailure();
-    case DioExceptionType.connectionError:
+    case .connectionError:
       return DataSource.noInternetConnection.getFailure();
-    case DioExceptionType.badResponse:
+    case .badResponse:
       final statusCode =
           error.response?.statusCode ?? ResponseCode.defaultError;
       final responseData = error.response?.data;
@@ -141,8 +140,8 @@ ApiErrorModel _handleError(DioException error) {
       } else {
         return _mapStatusCodeToFailure(statusCode);
       }
-    case DioExceptionType.unknown:
-    case DioExceptionType.badCertificate:
+    case .unknown:
+    case .badCertificate:
       return DataSource.defaultError.getFailure();
   }
 }

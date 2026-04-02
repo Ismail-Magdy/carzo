@@ -16,6 +16,9 @@ void main() async {
   //
   runApp(CarzoApp(appRouter: AppRouter()));
 }
+
 // flutter run --flavor development -t lib/main_development.dart
 
 // flutter run --flavor production -t lib/main_production.dart
+
+// flutter build apk --flavor production -t lib/main_production.dart

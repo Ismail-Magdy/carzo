@@ -1,9 +1,9 @@
-import 'package:carzo/chat_screen.dart';
+import 'package:carzo/features/chat/chat_screen.dart';
 import 'package:carzo/core/helpers/spacing.dart';
 import 'package:carzo/core/themes/app_colors.dart';
-import 'package:carzo/favorite_screen.dart';
+import 'package:carzo/features/favorite/favorite_screen.dart';
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
-import 'package:carzo/search_screen.dart';
+import 'package:carzo/features/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

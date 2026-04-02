@@ -1,3 +1,4 @@
+import 'package:carzo/core/themes/app_colors.dart';
 import 'package:carzo/core/themes/font_weight_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class CustomClickableText extends StatelessWidget {
         TextSpan(
           text: leftText,
           style: TextStyle(
-            color: const Color(0xCC4A628A),
+            color: AppColors.primaryColor,
             fontSize: 16.sp,
             height: 0,
           ),
@@ -29,7 +30,7 @@ class CustomClickableText extends StatelessWidget {
             TextSpan(
               text: rightText,
               style: TextStyle(
-                color: const Color(0xFF8FBFC2),
+                color: AppColors.secondaryTextColor,
                 fontWeight: FontWeightHelper.semiBold,
                 fontSize: 16.sp,
                 height: 0,

@@ -20,7 +20,7 @@ class CustomButtonForGetStartedScreen extends StatelessWidget {
       minWidth: .infinity,
       height: 50.h,
       color: AppColors.primaryColor,
-      textColor: Colors.white,
+      textColor: AppColors.whiteColor,
       shape: RoundedRectangleBorder(borderRadius: .circular(9.r)),
       onPressed: () {
         if (currentIndex == 1) {

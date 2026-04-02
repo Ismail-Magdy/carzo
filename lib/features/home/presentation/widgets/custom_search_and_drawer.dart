@@ -35,13 +35,13 @@ class _CustomSearchAndDrawerState extends State<CustomSearchAndDrawer> {
               height: 50.h,
               decoration: BoxDecoration(
                 shape: .circle,
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 border: .all(color: AppColors.greyColor, width: 1.w),
               ),
               child: Center(
                 child: SvgPicture.asset(
                   "assets/svgs/menu.svg",
-                  colorFilter: .mode(Color(0xff767676), .srcIn),
+                  colorFilter: .mode(AppColors.drawerColor, .srcIn),
                 ),
               ),
             ),
@@ -56,7 +56,7 @@ class _CustomSearchAndDrawerState extends State<CustomSearchAndDrawer> {
                 height: 50.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: .all(width: 1, color: Color(0xFFD7D7D7)),
+                  border: .all(width: 1, color: AppColors.greyColor),
                   borderRadius: .circular(10),
                 ),
                 child: Padding(
@@ -65,7 +65,7 @@ class _CustomSearchAndDrawerState extends State<CustomSearchAndDrawer> {
                     children: [
                       SvgPicture.asset(
                         'assets/svgs/search-normal.svg',
-                        colorFilter: const .mode(Color(0xff767676), .srcIn),
+                        colorFilter: const .mode(AppColors.drawerColor, .srcIn),
                       ),
                       //
                       horizontalSpace(12),

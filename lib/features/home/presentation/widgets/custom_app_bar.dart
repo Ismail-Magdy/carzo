@@ -24,6 +24,7 @@ class CustomAppBar extends StatelessWidget {
                 height: 45.h,
                 width: 94.w,
                 fit: .contain,
+                color: AppColors.primaryColor.withValues(alpha: 0.75),
               ),
               //
               Row(

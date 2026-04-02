@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.mainBackgroundColor,
       //
       drawer: Drawer(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.whiteColor,
         width: 280.w,
         child: CustomDrawer(scaffoldKey: _scaffoldKey),
       ),
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 padding: .all(15.r),
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   borderRadius: .only(
                     topLeft: .circular(30),
                     topRight: .circular(30),

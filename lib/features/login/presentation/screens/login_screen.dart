@@ -51,7 +51,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Logo Image
                     const LogoImage(),
                     // Welcome Text
-                    Text("Welcome to Carzo", style: AppFonts.font26DarkBold),
+                    Text(
+                      "Welcome to Carzo",
+                      style: AppFonts.font26DarkBold.copyWith(
+                        color: AppColors.textColor,
+                      ),
+                    ),
                     //
                     verticalSpace(50),
                     // Email Text

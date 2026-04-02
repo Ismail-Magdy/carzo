@@ -182,15 +182,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         hintText: widget.hintText,
 
-        hintStyle: const TextStyle(color: Color(0x7F4A628A)),
+        hintStyle: TextStyle(color: AppColors.textColor),
 
         /// Optional prefix icon.
         prefixIcon: widget.prefixIcon != null
-            ? Icon(widget.prefixIcon, color: Colors.grey)
+            ? Icon(widget.prefixIcon, color: AppColors.greyColor)
             : null,
 
         filled: true,
-        fillColor: Colors.white.withValues(alpha: 0.8),
+        fillColor: AppColors.whiteColor.withValues(alpha: 0.8),
         //
         border: OutlineInputBorder(
           borderRadius: .circular(14),

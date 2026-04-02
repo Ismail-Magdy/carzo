@@ -98,7 +98,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                           child: Text(
                             currentIndex == 0 ? "Skip" : "Back",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 14.sp,
                               height: 0,
                             ),

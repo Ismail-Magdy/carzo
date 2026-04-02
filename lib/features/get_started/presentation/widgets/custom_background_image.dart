@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/themes/app_colors.dart';
+
 class CustomBackgroundImage extends StatelessWidget {
   final String image;
   final int currentIndex;
@@ -27,17 +29,17 @@ class CustomBackgroundImage extends StatelessWidget {
                     begin: const Alignment(0.09, -1.00),
                     end: const Alignment(-0.09, 1),
                     colors: [
-                      const Color(0xE5304563),
-                      const Color(0xE54A628A),
-                      Colors.black.withValues(alpha: 0.02),
+                      AppColors.primaryColor.withValues(alpha: 0.9),
+                      AppColors.primaryColor.withValues(alpha: 0.6),
+                      AppColors.blackColor.withValues(alpha: 0.02),
                     ],
                   )
                 : LinearGradient(
                     begin: const Alignment(0.18, -0.98),
                     end: const Alignment(-0.18, 0.98),
                     colors: [
-                      const Color(0xE5304563),
-                      Colors.black.withValues(alpha: 0),
+                      AppColors.primaryColor,
+                      AppColors.blackColor.withValues(alpha: 0),
                     ],
                   ),
           ),

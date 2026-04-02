@@ -1,3 +1,4 @@
+import 'package:carzo/core/themes/app_colors.dart';
 import 'package:carzo/core/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,22 +33,26 @@ class CustomAlertDialog extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.3),
+                color: AppColors.whiteColor.withValues(alpha: 0.3),
                 shape: .circle,
               ),
               padding: .all(10.r),
-              child: Icon(dialogIcon, color: Colors.white, size: 40.r),
+              child: Icon(dialogIcon, color: AppColors.whiteColor, size: 40.r),
             ),
             verticalSpace(10),
             Text(
               dialogHeader,
-              style: AppFonts.font18DarkBold.copyWith(color: Colors.white),
+              style: AppFonts.font18DarkBold.copyWith(
+                color: AppColors.whiteColor,
+              ),
             ),
             verticalSpace(10),
             Text(
               dialogBody,
               textAlign: .center,
-              style: AppFonts.font15DarkMedium.copyWith(color: Colors.white),
+              style: AppFonts.font15DarkMedium.copyWith(
+                color: AppColors.whiteColor,
+              ),
             ),
             verticalSpace(20),
             SizedBox(
@@ -55,7 +60,7 @@ class CustomAlertDialog extends StatelessWidget {
               child: TextButton(
                 onPressed: onPressed,
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.whiteColor,
                   padding: .symmetric(vertical: 12.r),
                   shape: RoundedRectangleBorder(borderRadius: .circular(10)),
                 ),

@@ -1,3 +1,4 @@
+import 'package:carzo/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,6 +12,7 @@ class LogoImage extends StatelessWidget {
       height: 200.h,
       width: 200.w,
       fit: .contain,
+      color: AppColors.primaryColor.withValues(alpha: 0.75),
     );
   }
 }

@@ -108,26 +108,26 @@ class AppFonts {
   static TextStyle font15WhiteRegular = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Colors.white,
+    color: AppColors.whiteColor,
   );
   static TextStyle font16WhiteRegular = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Colors.white,
+    color: AppColors.whiteColor,
   );
   static TextStyle font18WhiteBold = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.bold,
-    color: Colors.white,
+    color: AppColors.whiteColor,
   );
   static TextStyle font18WhiteRegular = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Colors.white,
+    color: AppColors.whiteColor,
   );
   static TextStyle font24WhiteBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
-    color: Colors.white,
+    color: AppColors.whiteColor,
   );
 }

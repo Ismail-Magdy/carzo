@@ -73,7 +73,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     //
                     LogoImage(),
                     //
-                    Text("Sign Up", style: AppFonts.font26DarkBold),
+                    Text(
+                      "Sign Up",
+                      style: AppFonts.font26DarkBold.copyWith(
+                        color: AppColors.textColor,
+                      ),
+                    ),
                     //
                     verticalSpace(20),
                     //

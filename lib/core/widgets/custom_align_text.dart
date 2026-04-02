@@ -1,6 +1,8 @@
 import 'package:carzo/core/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
+import '../themes/app_colors.dart';
+
 class CustomAlignText extends StatelessWidget {
   final String? text;
   const CustomAlignText({super.key, required this.text});
@@ -14,6 +16,7 @@ class CustomAlignText extends StatelessWidget {
         style: AppFonts.font12DarkMedium.copyWith(
           height: 0.5,
           letterSpacing: 1.89,
+          color: AppColors.textColor,
         ),
       ),
     );

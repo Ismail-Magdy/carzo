@@ -6,11 +6,12 @@ import 'package:carzo/features/recommend_for_you/data/repos/all_cars_repo.dart';
 import 'package:carzo/features/recommend_for_you/manager/all_cars_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AllCarsCubit extends Cubit<AllCarsState> {
+class AllCarsCubit extends Cubit<AllCarsState<List<AllCarsModel>>> {
   final AllCarsRepo allCarsRepo;
   AllCarsCubit(this.allCarsRepo) : super(const AllCarsState.idle());
 
   void emitAllCars() async {
+    emit(const AllCarsState.loading());
     var data = await allCarsRepo.getAllCars();
     data.when(
       success: (List<AllCarsModel> allCarsList) {

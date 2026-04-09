@@ -8,7 +8,6 @@ class AppColors {
   static const Color secondaryTextColor = Color(0xE51F6A3D);
   static const Color secondaryGreyColor = Color(0xffF0F0F0);
   static const Color drawerColor = Color(0xff767676);
-
   //
 
   static const Color whiteColor = Colors.white;

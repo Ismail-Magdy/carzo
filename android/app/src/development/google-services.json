@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "216728188102",
-    "project_id": "carzo-338e8",
-    "storage_bucket": "carzo-338e8.firebasestorage.app"
+    "project_number": "1068115060573",
+    "project_id": "carzo-production",
+    "storage_bucket": "carzo-production.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:216728188102:android:46bd153ea838728de693c7",
+        "mobilesdk_app_id": "1:1068115060573:android:b016a9efeb2b8457b1eab4",
         "android_client_info": {
-          "package_name": "com.example.carzo"
+          "package_name": "com.example.carzo.dev"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCUn0QHO_4uRekFFBkTXOzkrn1j8Iq0mKs"
+          "current_key": "AIzaSyCNEsNOqjfU75sRGmMG1Ut2IM0P-jipB7c"
         }
       ],
       "services": {

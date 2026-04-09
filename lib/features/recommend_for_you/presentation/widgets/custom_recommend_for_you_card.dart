@@ -24,13 +24,14 @@ class CustomRecommendForYouCard extends StatelessWidget {
   final String type;
   final String location;
   final String price;
-  final void Function()? onTap;
+  final void Function() onTap;
   final String itemId;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      // Background Container
       child: Container(
         margin: .symmetric(horizontal: 18.w, vertical: 6.h),
         width: .infinity,
@@ -40,24 +41,25 @@ class CustomRecommendForYouCard extends StatelessWidget {
           borderRadius: .circular(15),
           border: .all(width: 1.w, color: AppColors.greyColor),
         ),
-
+        //
         child: Padding(
           padding: .only(right: 14.w),
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
+              // Image Container
               Container(
                 decoration: BoxDecoration(
                   color: AppColors.secondaryGreyColor,
                   borderRadius: .circular(15.r),
                 ),
                 child: ClipRRect(
-                  borderRadius: .circular(15.r),
-                  //
+                  borderRadius: .circular(12.r),
+                  // Image
                   child: CachedNetworkImage(
                     imageUrl: image,
                     width: 155.w,
-                    height: .infinity,
+                    height: 106.5.h,
                     fit: .cover,
                     placeholder: (context, url) {
                       return const Center(child: CustomProgressIndicator());
@@ -65,7 +67,7 @@ class CustomRecommendForYouCard extends StatelessWidget {
                     errorWidget: (context, url, error) {
                       return Center(
                         child: Image.asset(
-                          'assets/images/master/carzo_logo.png',
+                          "assets/images/master/carzo_logo.png",
                           width: 100.w,
                           fit: .contain,
                         ),
@@ -75,12 +77,14 @@ class CustomRecommendForYouCard extends StatelessWidget {
                   //
                 ),
               ),
+              //
               Padding(
                 padding: .symmetric(vertical: 8.h),
                 child: Column(
                   crossAxisAlignment: .start,
                   mainAxisAlignment: .spaceAround,
                   children: [
+                    // Title
                     Text(
                       title.length > 10
                           ? "${title.substring(0, 10)}..."
@@ -90,8 +94,10 @@ class CustomRecommendForYouCard extends StatelessWidget {
                         overflow: .ellipsis,
                       ),
                     ),
+                    // Type
                     Row(
                       children: [
+                        // Type Static Icon
                         SvgPicture.asset(
                           "assets/svgs/car_status.svg",
                           colorFilter: const .mode(Color(0xff767676), .srcIn),
@@ -99,7 +105,7 @@ class CustomRecommendForYouCard extends StatelessWidget {
                         ),
                         //
                         horizontalSpace(8),
-                        //
+                        // Type Text
                         Text(
                           type,
                           maxLines: 1,
@@ -107,18 +113,21 @@ class CustomRecommendForYouCard extends StatelessWidget {
                             overflow: .ellipsis,
                           ),
                         ),
+                        //
                       ],
                     ),
+                    // Location
                     Row(
                       children: [
+                        // Location Static Icon
                         SvgPicture.asset(
-                          'assets/svgs/location.svg',
+                          "assets/svgs/location.svg",
                           colorFilter: const .mode(Color(0xff767676), .srcIn),
                           width: 18.w,
                         ),
                         //
                         horizontalSpace(8),
-                        //
+                        // Location Text
                         Text(
                           location.length > 10
                               ? "${location.substring(0, 10)}..."
@@ -128,16 +137,21 @@ class CustomRecommendForYouCard extends StatelessWidget {
                             overflow: .ellipsis,
                           ),
                         ),
+                        //
                       ],
                     ),
+                    // Price
                     Row(
                       children: [
+                        // Price Static Icon
                         SvgPicture.asset(
                           "assets/svgs/money.svg",
                           colorFilter: const .mode(Color(0xff767676), .srcIn),
                           width: 18.w,
                         ),
+                        //
                         horizontalSpace(8),
+                        // Price Text
                         Text(
                           price.length > 10
                               ? "${price.substring(0, 10)}..."
@@ -147,10 +161,16 @@ class CustomRecommendForYouCard extends StatelessWidget {
                             overflow: .ellipsis,
                           ),
                         ),
+                        //
                       ],
                     ),
                   ],
                 ),
+              ),
+              SvgPicture.asset(
+                "assets/svgs/heart.svg",
+                colorFilter: const .mode(AppColors.greyColor, .srcIn),
+                width: 18.w,
               ),
               //
               // TODO:

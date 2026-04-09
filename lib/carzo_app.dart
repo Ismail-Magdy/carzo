@@ -19,7 +19,7 @@ class CarzoApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: "Poppins"),
           onGenerateRoute: appRouter.generateRoute,
-          initialRoute: Routes.rootScreen,
+          initialRoute: Routes.loginScreen,
         ),
       ),
     );

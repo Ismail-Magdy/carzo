@@ -31,7 +31,7 @@ class FavoriteCarsGridView extends StatelessWidget {
           location: car.dealershipName ?? 'Unknown',
           price: car.price?.toString() ?? 'N/A',
           itemId: car.carId?.toString() ?? '',
-          press: () {
+          onTap: () {
             carDetailsStatus = car.condition ?? "Unknown";
             carDetailsId = car.carId.toString();
             //  TODO: navigate to car details screen

@@ -48,7 +48,12 @@ class AppRouter {
 
       /// Root Screen
       case Routes.rootScreen:
-        return MaterialPageRoute(builder: (_) => const RootScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<FavoriteCubit>.value(
+            value: getIt<FavoriteCubit>(),
+            child: const RootScreen(),
+          ),
+        );
 
       /// NotificationScreen
       case Routes.notificationScreen:
@@ -61,8 +66,15 @@ class AppRouter {
       /// RecommendForYouScreen
       case Routes.recommendForYouScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<AllCarsCubit>(
-            create: (context) => getIt<AllCarsCubit>()..emitAllCars(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<AllCarsCubit>(
+                create: (context) => getIt<AllCarsCubit>()..emitAllCars(),
+              ),
+              BlocProvider<FavoriteCubit>.value(
+                value: getIt<FavoriteCubit>(),
+              ),
+            ],
             child: const RecommendForYouScreen(),
           ),
         );

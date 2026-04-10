@@ -17,19 +17,18 @@ class CustomFavoriteCarCard extends StatelessWidget {
     required this.type,
     required this.location,
     required this.price,
-    required this.press,
+    required this.onTap,
     required this.itemId,
   });
 
   final String imageSrc, title, type, location, price;
-  final VoidCallback press;
+  final VoidCallback onTap;
   final String itemId;
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      onPressed: press,
-      padding: .zero,
+    return GestureDetector(
+      onTap: onTap,
       child: Container(
         width: 160.w,
         height: 210.h,
@@ -138,11 +137,14 @@ class CustomFavoriteCarCard extends StatelessWidget {
                             width: 14.w,
                           ),
                           horizontalSpace(8),
-                          Text(
-                            location,
-                            maxLines: 1,
-                            style: AppFonts.font12GreyRegular.copyWith(
+                          Expanded(
+                            child: Text(
+                              location,
+                              maxLines: 1,
                               overflow: .ellipsis,
+                              style: AppFonts.font12GreyRegular.copyWith(
+                                overflow: .ellipsis,
+                              ),
                             ),
                           ),
                         ],

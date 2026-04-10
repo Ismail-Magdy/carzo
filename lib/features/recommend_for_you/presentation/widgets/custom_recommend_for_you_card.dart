@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carzo/core/widgets/custom_favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -167,21 +168,16 @@ class CustomRecommendForYouCard extends StatelessWidget {
                   ],
                 ),
               ),
-              SvgPicture.asset(
-                "assets/svgs/heart.svg",
-                colorFilter: const .mode(AppColors.greyColor, .srcIn),
-                width: 18.w,
+              //
+              CustomFavoriteButton(
+                itemId: itemId,
+                name: title,
+                condition: type,
+                dealershipName: location,
+                price: int.tryParse(price) ?? 0,
+                imageUrl: image,
               ),
               //
-              // TODO:
-              // CustomFavoriteButton(
-              //   itemId: itemId,
-              //   name: title,
-              //   condition: type,
-              //   dealershipName: location,
-              //   price: int.tryParse(price) ?? 0,
-              //   imageUrl: image,
-              // ),
             ],
           ),
         ),

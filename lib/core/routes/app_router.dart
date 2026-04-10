@@ -1,5 +1,6 @@
 import 'package:carzo/core/di/dependency_injection.dart';
 import 'package:carzo/core/routes/routes.dart';
+import 'package:carzo/features/favorite/presentation/screens/favorite_screen.dart';
 import 'package:carzo/features/get_started/presentation/screens/get_started_screen.dart';
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
@@ -13,6 +14,8 @@ import 'package:carzo/features/sign_up/presentation/screens/sign_up_screen.dart'
 import 'package:carzo/features/user/user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../features/favorite/manager/favorite_cubit.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -61,6 +64,15 @@ class AppRouter {
           builder: (_) => BlocProvider<AllCarsCubit>(
             create: (context) => getIt<AllCarsCubit>()..emitAllCars(),
             child: const RecommendForYouScreen(),
+          ),
+        );
+
+      /// Favorite Screen
+      case Routes.favoriteScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<FavoriteCubit>.value(
+            value: getIt<FavoriteCubit>(),
+            child: const FavoriteScreen(),
           ),
         );
 

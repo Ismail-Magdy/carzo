@@ -1,7 +1,7 @@
 import 'package:carzo/features/chat/chat_screen.dart';
 import 'package:carzo/core/helpers/spacing.dart';
 import 'package:carzo/core/themes/app_colors.dart';
-import 'package:carzo/features/favorite/favorite_screen.dart';
+import 'package:carzo/features/favorite/presentation/screens/favorite_screen.dart';
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/search/search_screen.dart';
 import 'package:flutter/material.dart';

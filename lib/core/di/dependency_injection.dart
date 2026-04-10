@@ -28,7 +28,7 @@ Future<void> initGetIt() async {
   getIt.registerLazySingleton<SignUpRepo>(() => SignUpRepo(getIt()));
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
 
-  /// Recommend For You
+  /// Recommend For You & Get All Cars
   getIt.registerLazySingleton<AllCarsRepo>(() => AllCarsRepo(getIt()));
   getIt.registerFactory<AllCarsCubit>(() => AllCarsCubit(getIt()));
 }

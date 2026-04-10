@@ -1,5 +1,6 @@
 import 'package:carzo/core/networking/api_services.dart';
 import 'package:carzo/core/networking/dio_factory.dart';
+import 'package:carzo/features/favorite/manager/favorite_cubit.dart';
 import 'package:carzo/features/login/data/repos/login_repo.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/recommend_for_you/data/repos/all_cars_repo.dart';
@@ -31,4 +32,7 @@ Future<void> initGetIt() async {
   /// Recommend For You & Get All Cars
   getIt.registerLazySingleton<AllCarsRepo>(() => AllCarsRepo(getIt()));
   getIt.registerFactory<AllCarsCubit>(() => AllCarsCubit(getIt()));
+
+  /// Favorite Cars
+  getIt.registerLazySingleton<FavoriteCubit>(() => FavoriteCubit(getIt()));
 }

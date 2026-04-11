@@ -1,5 +1,6 @@
 import 'package:carzo/core/di/dependency_injection.dart';
 import 'package:carzo/core/routes/routes.dart';
+import 'package:carzo/features/brands/presentation/screens/brands_screen.dart';
 import 'package:carzo/features/car_details/car_details_screen.dart';
 import 'package:carzo/features/favorite/presentation/screens/favorite_screen.dart';
 import 'package:carzo/features/get_started/presentation/screens/get_started_screen.dart';
@@ -89,6 +90,10 @@ class AppRouter {
       /// Car Details Screen
       case Routes.carDetailsScreen:
         return MaterialPageRoute(builder: (_) => const CarDetailsScreen());
+
+      /// Brands Screen
+      case Routes.brandsScreen:
+        return MaterialPageRoute(builder: (_) => const BrandsScreen());
 
       /// Default Case
       default:

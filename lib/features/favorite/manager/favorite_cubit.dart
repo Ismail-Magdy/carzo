@@ -1,68 +1,75 @@
 import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/helpers/shared_pref_helper.dart';
 import '../data/models/favorite_car_model.dart';
 
 class FavoriteCubit extends Cubit<List<FavoriteCarModel>> {
-  final SharedPreferences sharedPreferences;
-  static const String _favoriteKey = "FAVORITE_CARS_LIST";
+  // Initialize cubit with an empty list of favorites
+  FavoriteCubit() : super([]);
 
-  // أول ما الكيوبيت بيتكريت، بينادي على الداتا المحفوظة فوراً
-  FavoriteCubit(this.sharedPreferences) : super([]) {
-    _loadFavorites();
-  }
+  // Key used to store favorites in SharedPreferences
+  static const String favoriteKey = "favorite_cars";
 
-  // 1. جلب الداتا من الموبايل
-  void _loadFavorites() {
-    final List<String>? favoritesJsonList = sharedPreferences.getStringList(
-      _favoriteKey,
-    );
+  // Load favorites from local storage
+  void loadFavorites() async {
+    // Retrieve stored JSON string
+    final favoritesJson = SharedPrefHelper.getString(favoriteKey);
 
-    if (favoritesJsonList != null && favoritesJsonList.isNotEmpty) {
+    // Check if there is saved data
+    if (favoritesJson.isNotEmpty) {
       try {
-        final List<FavoriteCarModel> loadedCars = favoritesJsonList
-            .map((jsonStr) => FavoriteCarModel.fromJson(jsonDecode(jsonStr)))
+        // Decode JSON string into a list
+        final List<dynamic> decodedJson = json.decode(favoritesJson);
+
+        // Convert JSON list into FavoriteCarModel objects
+        final favorites = decodedJson
+            .map((json) => FavoriteCarModel.fromJson(json))
             .toList();
-        emit(loadedCars);
+
+        // Emit loaded favorites to update UI
+        emit(favorites);
       } catch (e) {
-        emit([]); // لو حصل أي إيرور في القراية، نرجع لستة فاضية
+        // If parsing fails, emit empty list to avoid crashes
+        emit([]);
       }
     } else {
+      // If no data exists, emit empty list
       emit([]);
     }
   }
 
-  // 2. إضافة أو حذف عربية (Toggle)
-  Future<void> toggleFavorite(FavoriteCarModel car) async {
-    // بناخد نسخة من اللستة الحالية
-    List<FavoriteCarModel> currentFavorites = List.from(state);
+  // Add or remove a car from favorites (toggle behavior)
+  void toggleFavorite(FavoriteCarModel car) async {
+    // Create a copy of the current state
+    final currentFavorites = List<FavoriteCarModel>.from(state);
 
-    // بندور: هل العربية دي موجودة أصلاً؟
+    // Check if the car already exists in favorites
     final index = currentFavorites.indexWhere(
-      (element) => element.carId == car.carId,
+      (favorite) => favorite.carId == car.carId,
     );
 
     if (index >= 0) {
-      // لو موجودة -> احذفها
+      // If found → remove it from favorites
       currentFavorites.removeAt(index);
     } else {
-      // لو مش موجودة -> ضيفها
+      // If not found → add it to favorites
       currentFavorites.add(car);
     }
 
-    // نحفظ اللستة الجديدة في الـ SharedPreferences
-    final List<String> updatedJsonList = currentFavorites
-        .map((carModel) => jsonEncode(carModel.toJson()))
-        .toList();
+    // Convert updated list to JSON string
+    final jsonString = json.encode(
+      currentFavorites.map((car) => car.toJson()).toList(),
+    );
 
-    await sharedPreferences.setStringList(_favoriteKey, updatedJsonList);
+    // Save updated favorites to local storage
+    await SharedPrefHelper.setData(favoriteKey, jsonString);
 
-    // نحدث الـ UI
+    // Emit new state to refresh UI
     emit(currentFavorites);
   }
 
-  // 3. دالة سريعة للـ UI عشان نعرف حالة أيقونة القلب
-  bool isFavorite(String carId) {
+  // Check if a specific car is marked as favorite
+  bool isFavorite(int carId) {
     return state.any((car) => car.carId == carId);
   }
 }

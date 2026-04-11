@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,39 +11,44 @@ import '../../../../core/widgets/custom_progress_indicator.dart';
 class CustomFavoriteCarCard extends StatelessWidget {
   const CustomFavoriteCarCard({
     super.key,
-    required this.imageSrc,
+    required this.image,
     required this.title,
     required this.type,
     required this.location,
     required this.price,
-    required this.press,
+    required this.onTap,
     required this.itemId,
   });
 
-  final String imageSrc, title, type, location, price;
-  final VoidCallback press;
+  final String image;
+  final String title;
+  final String type;
+  final String location;
+  final String price;
+  final Function() onTap;
   final String itemId;
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      onPressed: press,
-      padding: .zero,
+    return GestureDetector(
+      onTap: onTap,
+      // Card Shape
       child: Container(
         width: 160.w,
         height: 210.h,
-        decoration: ShapeDecoration(
-          color: const Color(0xFFF0F0F0),
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1, color: AppColors.greyColor),
-            borderRadius: .circular(15.r),
-          ),
+        decoration: BoxDecoration(
+          color: AppColors.secondaryGreyColor,
+          border: .all(width: 1, color: AppColors.greyColor),
+          borderRadius: .circular(15.r),
         ),
+        //
         child: Column(
           children: [
+            // Image Section
             Expanded(
               child: Stack(
                 children: [
+                  // Image with placeholder and error handling
                   Container(
                     decoration: BoxDecoration(
                       color: AppColors.secondaryGreyColor,
@@ -59,7 +63,7 @@ class CustomFavoriteCarCard extends StatelessWidget {
                         topRight: .circular(15.r),
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: imageSrc,
+                        imageUrl: image,
                         fit: .cover,
                         width: .infinity,
                         height: .infinity,
@@ -75,26 +79,31 @@ class CustomFavoriteCarCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                  //
+                  // Favorite Button
                   Positioned(
-                    top: 5.r,
-                    right: 5.r,
+                    top: 5.h,
+                    right: 5.w,
                     child: CustomFavoriteButton(
                       itemId: itemId,
                       name: title,
                       condition: type,
                       dealershipName: location,
                       price: int.tryParse(price) ?? 0,
-                      imageUrl: imageSrc,
+                      imageUrl: image,
                     ),
                   ),
+                  //
                 ],
               ),
             ),
+            //
+            // Details Section
             Expanded(
               child: Container(
                 width: .infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   borderRadius: .only(
                     bottomLeft: .circular(15.r),
                     bottomRight: .circular(15.r),
@@ -102,73 +111,94 @@ class CustomFavoriteCarCard extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: .all(10.r),
+                  // Details Column
                   child: Column(
                     crossAxisAlignment: .start,
                     mainAxisAlignment: .spaceBetween,
                     children: [
+                      // Title
                       Text(
                         title,
                         maxLines: 1,
-                        style: AppFonts.font14DarkSemiBold.copyWith(
-                          overflow: .ellipsis,
-                        ),
+                        overflow: .ellipsis,
+                        style: AppFonts.font14DarkSemiBold,
                       ),
+                      //
+                      // Type
                       Row(
                         children: [
+                          // Type Icon
                           SvgPicture.asset(
                             "assets/svgs/car_status.svg",
                             colorFilter: const .mode(Color(0xff767676), .srcIn),
                             width: 14.w,
                           ),
                           horizontalSpace(8),
+                          // Type Text
                           Text(
                             type,
                             maxLines: 1,
-                            style: AppFonts.font12GreyRegular.copyWith(
-                              overflow: .ellipsis,
-                            ),
+                            overflow: .ellipsis,
+                            style: AppFonts.font12GreyRegular,
                           ),
                         ],
                       ),
+                      //
+                      // Location
                       Row(
                         children: [
+                          // Location Icon
                           SvgPicture.asset(
+                            width: 14.w,
                             "assets/svgs/location.svg",
-                            colorFilter: const .mode(Color(0xff767676), .srcIn),
-                            width: 14.w,
-                          ),
-                          horizontalSpace(8),
-                          Text(
-                            location,
-                            maxLines: 1,
-                            style: AppFonts.font12GreyRegular.copyWith(
-                              overflow: .ellipsis,
+                            colorFilter: const .mode(
+                              AppColors.drawerColor,
+                              .srcIn,
                             ),
                           ),
+                          horizontalSpace(8),
+                          // Location Text
+                          Expanded(
+                            child: Text(
+                              location,
+                              maxLines: 1,
+                              overflow: .ellipsis,
+                              style: AppFonts.font12GreyRegular,
+                            ),
+                          ),
+                          //
                         ],
                       ),
+                      //
+                      // Price
                       Row(
                         children: [
+                          // Price Icon
                           SvgPicture.asset(
-                            "assets/svgs/money.svg",
-                            colorFilter: const .mode(Color(0xff767676), .srcIn),
                             width: 14.w,
+                            "assets/svgs/money.svg",
+                            colorFilter: const .mode(
+                              AppColors.drawerColor,
+                              .srcIn,
+                            ),
                           ),
                           horizontalSpace(8),
+                          // Price Text
                           Text(
                             price,
                             maxLines: 1,
-                            style: AppFonts.font12GreyRegular.copyWith(
-                              overflow: .ellipsis,
-                            ),
+                            overflow: .ellipsis,
+                            style: AppFonts.font12GreyRegular,
                           ),
                         ],
                       ),
+                      //
                     ],
                   ),
                 ),
               ),
             ),
+            //
           ],
         ),
       ),

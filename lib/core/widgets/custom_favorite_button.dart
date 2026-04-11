@@ -7,13 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomFavoriteButton extends StatelessWidget {
-  final String itemId;
-  final String name;
-  final String condition;
-  final String dealershipName;
-  final int price;
-  final String imageUrl;
-
   const CustomFavoriteButton({
     super.key,
     required this.itemId,
@@ -24,6 +17,13 @@ class CustomFavoriteButton extends StatelessWidget {
     required this.imageUrl,
   });
 
+  final String itemId;
+  final String name;
+  final String condition;
+  final String dealershipName;
+  final int price;
+  final String imageUrl;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteCubit, List<FavoriteCarModel>>(
@@ -31,7 +31,6 @@ class CustomFavoriteButton extends StatelessWidget {
         final isFavorite = favoriteItems.any(
           (favCar) => favCar.carId.toString() == itemId,
         );
-
         return GestureDetector(
           onTap: () {
             final car = FavoriteCarModel(
@@ -44,6 +43,7 @@ class CustomFavoriteButton extends StatelessWidget {
             );
             context.read<FavoriteCubit>().toggleFavorite(car);
           },
+          // Button Circle Shape
           child: Container(
             width: 30.w,
             height: 30.h,
@@ -54,6 +54,7 @@ class CustomFavoriteButton extends StatelessWidget {
                 width: 1.5,
               ),
             ),
+            // Heart Icon
             child: Center(
               child: SvgPicture.asset(
                 isFavorite
@@ -62,7 +63,7 @@ class CustomFavoriteButton extends StatelessWidget {
                 width: 15.w,
                 height: 15.h,
                 colorFilter: .mode(
-                  isFavorite ? Colors.red : const Color(0xff767676),
+                  isFavorite ? Colors.red : AppColors.drawerColor,
                   .srcIn,
                 ),
               ),

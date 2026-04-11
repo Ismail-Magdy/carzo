@@ -1,5 +1,6 @@
 import 'package:carzo/core/di/dependency_injection.dart';
 import 'package:carzo/core/routes/routes.dart';
+import 'package:carzo/features/car_details/car_details_screen.dart';
 import 'package:carzo/features/favorite/presentation/screens/favorite_screen.dart';
 import 'package:carzo/features/get_started/presentation/screens/get_started_screen.dart';
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
@@ -14,7 +15,6 @@ import 'package:carzo/features/sign_up/presentation/screens/sign_up_screen.dart'
 import 'package:carzo/features/user/user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/favorite/manager/favorite_cubit.dart';
 
 class AppRouter {
@@ -48,7 +48,12 @@ class AppRouter {
 
       /// Root Screen
       case Routes.rootScreen:
-        return MaterialPageRoute(builder: (_) => const RootScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<FavoriteCubit>.value(
+            value: getIt<FavoriteCubit>(),
+            child: const RootScreen(),
+          ),
+        );
 
       /// NotificationScreen
       case Routes.notificationScreen:
@@ -61,8 +66,13 @@ class AppRouter {
       /// RecommendForYouScreen
       case Routes.recommendForYouScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<AllCarsCubit>(
-            create: (context) => getIt<AllCarsCubit>()..emitAllCars(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<AllCarsCubit>(
+                create: (context) => getIt<AllCarsCubit>()..emitAllCars(),
+              ),
+              BlocProvider<FavoriteCubit>.value(value: getIt<FavoriteCubit>()),
+            ],
             child: const RecommendForYouScreen(),
           ),
         );
@@ -75,6 +85,10 @@ class AppRouter {
             child: const FavoriteScreen(),
           ),
         );
+
+      /// Car Details Screen
+      case Routes.carDetailsScreen:
+        return MaterialPageRoute(builder: (_) => const CarDetailsScreen());
 
       /// Default Case
       default:

@@ -1,3 +1,4 @@
+import 'package:carzo/core/helpers/extensions.dart';
 import 'package:carzo/core/themes/app_colors.dart';
 import 'package:carzo/core/widgets/custom_common_app_bar.dart';
 import 'package:carzo/core/widgets/error_screen.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/constants.dart';
+import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/custom_list_view_loading.dart';
 import '../../data/models/all_cars_model.dart';
 import '../../manager/all_cars_cubit.dart';
@@ -60,8 +62,8 @@ class RecommendForYouScreen extends StatelessWidget {
                                       allCars[index].status ?? "Unknown";
                                   carDetailsId = allCars[index].carId
                                       .toString();
-                                  // TODO:
-                                  //  context.pushNamed(Routes.carDetailsView);
+                                  // Navigate to Car Details Screen
+                                  context.pushNamed(Routes.carDetailsScreen);
                                 },
                               );
                             },

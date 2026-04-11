@@ -9,4 +9,5 @@ class Routes {
   static const String userScreen = "/userScreen";
   static const String recommendForYouScreen = "/recommendForYouScreen";
   static const String favoriteScreen = "/favoriteScreen";
+  static const String carDetailsScreen = "/carDetailsScreen";
 }

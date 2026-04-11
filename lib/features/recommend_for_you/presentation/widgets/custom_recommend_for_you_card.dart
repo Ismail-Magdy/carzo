@@ -38,7 +38,7 @@ class CustomRecommendForYouCard extends StatelessWidget {
         width: .infinity,
         height: 110.h,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: .circular(15),
           border: .all(width: 1.w, color: AppColors.greyColor),
         ),
@@ -169,6 +169,7 @@ class CustomRecommendForYouCard extends StatelessWidget {
                 ),
               ),
               //
+              // Favorite Button
               CustomFavoriteButton(
                 itemId: itemId,
                 name: title,

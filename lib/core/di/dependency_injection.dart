@@ -34,5 +34,5 @@ Future<void> initGetIt() async {
   getIt.registerFactory<AllCarsCubit>(() => AllCarsCubit(getIt()));
 
   /// Favorite Cars
-  getIt.registerLazySingleton<FavoriteCubit>(() => FavoriteCubit(getIt()));
+  getIt.registerLazySingleton<FavoriteCubit>(() => FavoriteCubit());
 }

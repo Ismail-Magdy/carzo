@@ -49,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
               CustomTwoTexts(
                 leftText: "Brands",
                 onTap: () {
-                  // TODO: Navigate to Related Screen
-                  // context.pushNamed(Routes.brandsView);
+                  //  Navigate to Related Screen
+                  context.pushNamed(Routes.brandsScreen);
                 },
               ),
               //

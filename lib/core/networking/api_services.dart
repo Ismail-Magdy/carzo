@@ -1,4 +1,5 @@
 import 'package:carzo/core/networking/api_constants.dart';
+import 'package:carzo/features/brands/data/models/all_brands_model.dart';
 import 'package:carzo/features/login/data/models/login_request_model.dart';
 import 'package:carzo/features/login/data/models/login_response_model.dart';
 import 'package:carzo/features/recommend_for_you/data/models/all_cars_model.dart';
@@ -26,4 +27,8 @@ abstract class ApiServices {
   /// Get All Cars
   @GET(ApiConstants.apiAllCars)
   Future<List<AllCarsModel>> getAllCars();
+
+  /// Get All Brands
+  @GET(ApiConstants.apiAllBrand)
+  Future<List<AllBrandsModel>> getAllBrands();
 }

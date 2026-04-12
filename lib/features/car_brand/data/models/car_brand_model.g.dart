@@ -11,7 +11,7 @@ CarBrandModel _$CarBrandModelFromJson(Map<String, dynamic> json) =>
       carId: (json['carId'] as num?)?.toInt(),
       status: json['status'] as String?,
       carName: json['carName'] as String?,
-      price: json['price'] as num?,
+      price: (json['price'] as num?)?.toInt(),
       condition: json['condition'] as String?,
       dealershipName: json['dealershipName'] as String?,
       url: (json['url'] as List<dynamic>?)
@@ -39,7 +39,7 @@ const _$CarBrandModelJsonSchema = {
     'carId': {'type': 'integer'},
     'status': {'type': 'string'},
     'carName': {'type': 'string'},
-    'price': {'type': 'number'},
+    'price': {'type': 'integer'},
     'condition': {'type': 'string'},
     'dealershipName': {'type': 'string'},
     'url': {

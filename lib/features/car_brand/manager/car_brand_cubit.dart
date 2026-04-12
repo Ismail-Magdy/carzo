@@ -11,6 +11,7 @@ class CarBrandCubit extends Cubit<CarBrandState> {
   CarBrandCubit(this._carBrandRepo) : super(CarBrandState.idle());
 
   void emitGetAllBrandCars(String brandName) async {
+    emit(const CarBrandState.loading());
     final data = await _carBrandRepo.getCarsByBrand(brandName);
 
     data.when(

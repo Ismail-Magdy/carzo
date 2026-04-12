@@ -23,7 +23,7 @@ class CarBrandGridView extends StatelessWidget {
       //
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
-      padding: .only(bottom: 12.h),
+      padding: .only(bottom: 12.h, top: 10.h),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 12,

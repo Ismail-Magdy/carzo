@@ -18,7 +18,7 @@ class CustomGridViewLoading extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        mainAxisExtent: MediaQuery.sizeOf(context).height * 0.28,
+        childAspectRatio: 0.7,
       ),
       itemCount: 8,
       itemBuilder: (_, index) {

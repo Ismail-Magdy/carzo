@@ -7,7 +7,7 @@ class CarBrandModel {
   int? carId;
   String? status;
   String? carName;
-  num? price;
+  int? price;
   String? condition;
   String? dealershipName;
   List<Url>? url;

@@ -2,6 +2,8 @@ import 'package:carzo/features/home/presentation/widgets/custom_brand_item.dart'
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/constants.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routes/routes.dart';
 
 class CustomBrandsRow extends StatelessWidget {
   const CustomBrandsRow({super.key});
@@ -17,8 +19,8 @@ class CustomBrandsRow extends StatelessWidget {
           text: "BMW",
           onTap: () {
             masterBrandName = "BMW";
-            // TODO :
-            // context.pushNamed(Routes.brandsCarsView);
+
+            context.pushNamed(Routes.carBrandScreen);
           },
         ),
         //
@@ -27,8 +29,7 @@ class CustomBrandsRow extends StatelessWidget {
           text: "Mercedes",
           onTap: () {
             masterBrandName = "Mercedes-Benz";
-            // TODO :
-            // context.pushNamed(Routes.brandsCarsView);
+            context.pushNamed(Routes.carBrandScreen);
           },
         ),
         //
@@ -37,8 +38,7 @@ class CustomBrandsRow extends StatelessWidget {
           text: "Audi",
           onTap: () {
             masterBrandName = "Audi";
-            // TODO :
-            // context.pushNamed(Routes.brandsCarsView);
+            context.pushNamed(Routes.carBrandScreen);
           },
         ),
         //
@@ -47,8 +47,7 @@ class CustomBrandsRow extends StatelessWidget {
           text: "Kia",
           onTap: () {
             masterBrandName = "Kia";
-            // TODO :
-            // context.pushNamed(Routes.brandsCarsView);
+            context.pushNamed(Routes.carBrandScreen);
           },
         ),
         //

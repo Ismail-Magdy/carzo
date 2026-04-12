@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/themes/app_colors.dart';
-import '../../../../core/themes/app_fonts.dart';
 import '../../../../core/widgets/custom_grid_view_loading.dart';
 import '../../../../core/widgets/error_screen.dart';
 import '../../manager/car_brand_state.dart';
 import '../widgets/car_brand_grid_view.dart';
+import '../widgets/no_cars_available.dart';
 
 class CarBrandScreen extends StatelessWidget {
   const CarBrandScreen({super.key, required this.brandName});
@@ -39,12 +39,7 @@ class CarBrandScreen extends StatelessWidget {
                       //
                       success: (carBrandsList) {
                         if (carBrandsList.isEmpty) {
-                          return Center(
-                            child: Text(
-                              "No cars available for this brand",
-                              style: AppFonts.font16DarkSemiBold,
-                            ),
-                          );
+                          return NoCarsAvailable();
                         }
                         return CarBrandGridView(
                           brandName: brandName,

@@ -107,9 +107,15 @@ class AppRouter {
       /// Car Brand Screen
       case Routes.carBrandScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<CarBrandCubit>(
-            create: (context) =>
-                getIt<CarBrandCubit>()..emitGetAllBrandCars(masterBrandName),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<CarBrandCubit>(
+                create: (context) =>
+                    getIt<CarBrandCubit>()
+                      ..emitGetAllBrandCars(masterBrandName),
+              ),
+              BlocProvider<FavoriteCubit>.value(value: getIt<FavoriteCubit>()),
+            ],
             child: CarBrandScreen(brandName: masterBrandName),
           ),
         );

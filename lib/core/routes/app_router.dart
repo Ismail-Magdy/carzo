@@ -1,4 +1,5 @@
 import 'package:carzo/core/di/dependency_injection.dart';
+import 'package:carzo/core/helpers/constants.dart';
 import 'package:carzo/core/routes/routes.dart';
 import 'package:carzo/features/brands/manager/all_brands_cubit.dart';
 import 'package:carzo/features/brands/presentation/screens/brands_screen.dart';
@@ -17,6 +18,8 @@ import 'package:carzo/features/sign_up/presentation/screens/sign_up_screen.dart'
 import 'package:carzo/features/user/user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/car_brand/manager/car_brand_cubit.dart';
+import '../../features/car_brand/presentation/screens/car_brand_screen.dart';
 import '../../features/favorite/manager/favorite_cubit.dart';
 
 class AppRouter {
@@ -98,6 +101,16 @@ class AppRouter {
           builder: (_) => BlocProvider<AllBrandsCubit>(
             create: (context) => getIt<AllBrandsCubit>()..emitAllBrands(),
             child: const BrandsScreen(),
+          ),
+        );
+
+      /// Car Brand Screen
+      case Routes.carBrandScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<CarBrandCubit>(
+            create: (context) =>
+                getIt<CarBrandCubit>()..emitGetAllBrandCars(masterBrandName),
+            child: CarBrandScreen(brandName: masterBrandName),
           ),
         );
 

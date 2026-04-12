@@ -8,6 +8,8 @@ import 'package:carzo/features/sign_up/data/models/sign_up_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/car_brand/data/models/car_brand_model.dart';
+
 part 'api_services.g.dart';
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
@@ -31,4 +33,10 @@ abstract class ApiServices {
   /// Get All Brands
   @GET(ApiConstants.apiAllBrand)
   Future<List<AllBrandsModel>> getAllBrands();
+
+  // Get All Cars By Brand
+  @GET("${ApiConstants.apiBrandCars}/{brandName}")
+  Future<List<CarBrandModel>> getCarsByBrand(
+    @Path("brandName") String brandName,
+  );
 }

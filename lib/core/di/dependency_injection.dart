@@ -1,6 +1,7 @@
 import 'package:carzo/core/networking/api_services.dart';
 import 'package:carzo/core/networking/dio_factory.dart';
 import 'package:carzo/features/brands/data/repos/all_brands_repo.dart';
+import 'package:carzo/features/car_brand/data/repos/car_brand_repo.dart';
 import 'package:carzo/features/favorite/manager/favorite_cubit.dart';
 import 'package:carzo/features/login/data/repos/login_repo.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
@@ -10,8 +11,8 @@ import 'package:carzo/features/sign_up/data/repo/sign_up_repo.dart';
 import 'package:carzo/features/sign_up/manager/sign_up_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../features/brands/manager/all_brands_cubit.dart';
+import '../../features/car_brand/manager/car_brand_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -42,4 +43,8 @@ Future<void> initGetIt() async {
 
   /// Favorite Cars
   getIt.registerLazySingleton<FavoriteCubit>(() => FavoriteCubit());
+
+  /// Car Brand
+  getIt.registerLazySingleton<CarBrandRepo>(() => CarBrandRepo(getIt()));
+  getIt.registerFactory<CarBrandCubit>(() => CarBrandCubit(getIt()));
 }

@@ -8,14 +8,16 @@ class CustomTwoTexts extends StatelessWidget {
     super.key,
     required this.leftText,
     required this.onTap,
+    this.padding,
   });
   final String leftText;
   final void Function() onTap;
+  final double? padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: .symmetric(horizontal: 12.w),
+      padding: .symmetric(horizontal: padding == null ? 12.w : padding!.w),
       child: GestureDetector(
         onTap: onTap,
         child: Row(

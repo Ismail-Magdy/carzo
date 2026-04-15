@@ -8,7 +8,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/themes/app_fonts.dart';
+import '../widgets/custom_available_list_cars.dart';
 import '../widgets/custom_brands_row.dart';
+import '../widgets/custom_new_cars_section.dart';
 import '../widgets/custom_search_and_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
               verticalSpace(25),
               //
               Container(
-                padding: .all(15.r),
+                padding: .all(17.r),
                 decoration: const BoxDecoration(
                   color: AppColors.whiteColor,
                   borderRadius: .only(
@@ -73,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     //
                     CustomTwoTexts(
+                      padding: 0,
                       leftText: "Recommend For You",
                       onTap: () {
                         context.pushNamed(Routes.recommendForYouScreen);
@@ -81,20 +84,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     //
                     verticalSpace(10),
                     //
-                    Padding(
-                      padding: .only(left: 15.w),
-                      child: Align(
-                        alignment: .centerLeft,
-                        child: Text(
-                          "Available",
-                          style: AppFonts.font14GreyRegular,
-                        ),
+                    Align(
+                      alignment: .centerLeft,
+                      child: Text(
+                        "Available",
+                        style: AppFonts.font14GreyRegular,
                       ),
                     ),
                     //
                     verticalSpace(14),
                     //
+                    CustomAvailableListCars(),
+                    //
+                    verticalSpace(30),
+                    //
                     CustomTwoTexts(
+                      padding: 5,
                       leftText: "Our Services",
                       onTap: () {
                         // TODO :
@@ -102,9 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                     //
+                    verticalSpace(14),
+                    //
+                    CustomNewCarsSection(),
+                    //
+                    verticalSpace(105),
                   ],
                 ),
               ),
+              //
             ],
           ),
         ),

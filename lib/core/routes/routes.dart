@@ -12,4 +12,5 @@ class Routes {
   static const String carDetailsScreen = "/carDetailsScreen";
   static const String brandsScreen = "/brandsScreen";
   static const String carBrandScreen = "/carBrandScreen";
+  static const String newCarsScreen = "/newCarsScreen";
 }

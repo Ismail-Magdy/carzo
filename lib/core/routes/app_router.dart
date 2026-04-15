@@ -9,6 +9,7 @@ import 'package:carzo/features/get_started/presentation/screens/get_started_scre
 import 'package:carzo/features/home/presentation/screens/home_screen.dart';
 import 'package:carzo/features/login/manager/login_cubit.dart';
 import 'package:carzo/features/login/presentation/screens/login_screen.dart';
+import 'package:carzo/features/new_cars/new_cars_screen.dart';
 import 'package:carzo/features/notification/presentation/screens/notification_screen.dart';
 import 'package:carzo/features/recommend_for_you/manager/all_cars_cubit.dart';
 import 'package:carzo/features/recommend_for_you/presentation/screens/recommend_for_you_screen.dart';
@@ -21,6 +22,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/car_brand/manager/car_brand_cubit.dart';
 import '../../features/car_brand/presentation/screens/car_brand_screen.dart';
 import '../../features/favorite/manager/favorite_cubit.dart';
+import '../../features/recommend_for_you/data/repos/all_cars_repo.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -49,13 +51,36 @@ class AppRouter {
 
       /// Home Screen
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<AllCarsCubit>(
+                create: (context) =>
+                    AllCarsCubit(getIt<AllCarsRepo>())..emitAllCars(),
+              ),
+
+              // BlocProvider(
+              //   create:
+              //       (context) =>
+              //           SearchCarsCubit(getIt<SearchCarsRepo>())
+              //             ..emitGetFilteredCars(filterSearchByBrand),
+              // ),
+            ],
+            child: const HomeScreen(),
+          ),
+        );
 
       /// Root Screen
       case Routes.rootScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<FavoriteCubit>.value(
-            value: getIt<FavoriteCubit>(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<AllCarsCubit>(
+                create: (context) => getIt<AllCarsCubit>()..emitAllCars(),
+              ),
+              BlocProvider.value(value: getIt<FavoriteCubit>()),
+            ],
+
             child: const RootScreen(),
           ),
         );
@@ -119,6 +144,10 @@ class AppRouter {
             child: CarBrandScreen(brandName: masterBrandName),
           ),
         );
+
+      /// New Cars Screen
+      case Routes.newCarsScreen:
+        return MaterialPageRoute(builder: (_) => const NewCarsScreen());
 
       /// Default Case
       default:

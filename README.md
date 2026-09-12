@@ -2,6 +2,9 @@
 
 A premium car marketplace application built with Flutter, focusing on high performance, clean architecture, and scalable design patterns.
 
+<img width="1920" height="1080" alt="Screenshot (914)" src="https://github.com/user-attachments/assets/d740ca6a-6842-4209-988f-e68fe4058ad0" />
+
+
 ## Technical Stack & Architecture
 
 - **Framework:** [Flutter](https://flutter.dev)
